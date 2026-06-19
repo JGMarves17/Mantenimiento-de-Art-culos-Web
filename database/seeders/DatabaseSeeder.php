@@ -2,24 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PostSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $articulos = [
+            ['titulo' => 'Admisiones', 'contenido' => 'Proceso de admisiones abierto para el nuevo periodo académico.', 'autor' => 'Admisiones', 'categoria' => 'Admisiones'],
+            ['titulo' => 'Matriculate en línea', 'contenido' => 'Ya puedes matricularte en línea desde el portal estudiantil.', 'autor' => 'Registro', 'categoria' => 'Matrícula en línea'],
+            ['titulo' => 'Bienvenida a nuevos estudiantes', 'contenido' => 'La USAP da la bienvenida a los estudiantes de primer ingreso.', 'autor' => 'Marco Alemán Watters', 'categoria' => 'Novedades'],
+        ];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($articulos as $articulo) {
+            Post::create($articulo);
+        }
     }
 }
